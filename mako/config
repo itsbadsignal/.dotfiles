@@ -1,0 +1,42 @@
+# Appearance
+background-color=#000000
+text-color=#cccccc
+border-color=#2a2a2a
+border-size=1
+border-radius=0
+
+# Layout
+width=320
+height=100
+padding=12
+margin=10
+
+# Position (top-right)
+anchor=top-right
+
+# Font
+font=JetBrainsMono Nerd Font 11
+
+# Timing
+default-timeout=5000
+ignore-timeout=0
+
+# No icons, keep it text-only
+icon-path=
+max-icon-size=0
+
+# Urgency overrides
+[urgency=low]
+background-color=#000000
+text-color=#444444
+border-color=#1a1a1a
+
+[urgency=normal]
+background-color=#000000
+text-color=#cccccc
+border-color=#2a2a2a
+
+[urgency=high]
+background-color=#0d0d0d
+text-color=#ffffff
+border-color=#cc3333

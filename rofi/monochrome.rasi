@@ -1,0 +1,95 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: false;
+    drun-display-format: "{name}";
+    window-format: "{w} · {c} · {t}";
+}
+
+* {
+    bg:         #000000;
+    bg-alt:     #0d0d0d;
+    bg-sel:     #1a1a1a;
+    border-col: #2a2a2a;
+    fg-dim:     #444444;
+    fg:         #cccccc;
+    fg-bright:  #ffffff;
+
+    background-color: transparent;
+    text-color:       @fg;
+    font:             "JetBrainsMono Nerd Font 12";
+}
+
+window {
+    background-color: @bg;
+    border:           1px;
+    border-color:     @border-col;
+    border-radius:    0;
+    width:            480px;
+    padding:          0;
+}
+
+mainbox {
+    background-color: @bg;
+    children: [ inputbar, listview ];
+    padding:  0;
+    spacing:  0;
+}
+
+inputbar {
+    background-color: @bg;
+    border-color:     @border-col;
+    border:           0 0 1px 0;
+    padding:          10px 14px;
+    spacing:          8px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: @bg;
+    text-color:       @fg-dim;
+}
+
+entry {
+    background-color: @bg;
+    text-color:       @fg-bright;
+    placeholder:      "search...";
+    placeholder-color: @fg-dim;
+}
+
+listview {
+    background-color: @bg;
+    padding:          6px 0;
+    lines:            8;
+    scrollbar:        false;
+    spacing:          0;
+}
+
+element {
+    background-color: transparent;
+    padding:          8px 14px;
+    spacing:          0;
+    border-radius:    0;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element selected.normal {
+    background-color: @bg-sel;
+    text-color:       @fg-bright;
+    border:           0 0 0 2px;
+    border-color:     @fg-bright;
+}
+
+element alternate.normal {
+    background-color: @bg-alt;
+    text-color:       @fg;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}
