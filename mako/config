@@ -21,10 +21,6 @@ font=JetBrainsMono Nerd Font 11
 default-timeout=5000
 ignore-timeout=0
 
-# No icons, keep it text-only
-icon-path=
-max-icon-size=0
-
 # Urgency overrides
 [urgency=low]
 background-color=#000000
