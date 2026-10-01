@@ -4,7 +4,7 @@
 set $mod Mod4
 
 # Terminal
-set $term alacritty
+set $term foot
 
 # Colors
 set $black    #000000
