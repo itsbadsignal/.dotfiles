@@ -1,0 +1,42 @@
+he# ~/.config/starship.toml
+
+add_newline = false
+format = "$directory$git_branch$git_status$python$character"
+right_format = "$cmd_duration$status"
+
+[directory]
+style = "#c6c6c6"
+truncation_length = 3
+truncate_to_repo = true
+read_only = " ro"
+read_only_style = "#9c7070"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+style = "#6b6b6b"
+format = "[$branch]($style) "
+
+[git_status]
+style = "#9c7070"
+format = "([$all_status$ahead_behind]($style) )"
+
+[python]
+style = "#6b6b6b"
+format = "([$virtualenv]($style) )"
+detect_extensions = []
+detect_files = []
+
+[character]
+success_symbol = "[›](#a8a8a8)"
+error_symbol = "[›](#9c7070)"
+vimcmd_symbol = "[‹](#a8a8a8)"
+
+[cmd_duration]
+min_time = 2_000
+style = "#4d4d4d"
+format = "[$duration]($style) "
+
+[status]
+disabled = false
+style = "#9c7070"
+format = "[$status]($style)"

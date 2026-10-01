@@ -1,5 +1,4 @@
 # ~/.config/i3status/config
-# pure black / minimal — matches foot palette
 
 general {
     colors = true
