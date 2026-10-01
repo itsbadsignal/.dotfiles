@@ -1,9 +1,65 @@
+# ~/.config/i3status/config
+# pure black / minimal — matches foot palette
+
 general {
     colors = true
     interval = 1
+    color_good = "#a8a8a8"
+    color_degraded = "#a89a7d"
+    color_bad = "#9c7070"
 }
 
+order += "wireless _first_"
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "volume master"
+order += "battery all"
 order += "time"
+
+wireless _first_ {
+    format_up = "%essid %quality"
+    format_down = "offline"
+}
+
+cpu_usage {
+    format = "cpu %usage"
+    degraded_threshold = 70
+    max_threshold = 90
+}
+
+memory {
+    format = "mem %used"
+    threshold_degraded = "15%"
+    threshold_critical = "5%"
+    format_degraded = "mem %available free"
+}
+
+disk "/" {
+    format = "/ %avail"
+    low_threshold = 10
+    threshold_type = percentage_free
+}
+
+volume master {
+    format = "vol %volume"
+    format_muted = "vol muted"
+    device = "default"
+}
+
+battery all {
+    format = "%status %percentage %remaining"
+    format_down = ""
+    status_chr = "chr"
+    status_bat = "bat"
+    status_unk = "?"
+    status_full = "full"
+    integer_battery_capacity = true
+    last_full_capacity = true
+    hide_seconds = true
+    low_threshold = 15
+    threshold_type = percentage
+}
 
 time {
     format = "%H:%M:%S | %a %d %b"
