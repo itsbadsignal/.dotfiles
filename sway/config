@@ -1,0 +1,175 @@
+# Sway configuration
+
+# Mod key (Super/Windows)
+set $mod Mod4
+
+# Terminal
+set $term alacritty
+
+# Colors
+set $black    #000000
+set $white    #ffffff
+set $red      #54abab
+set $darkgray #111111
+
+# Output (background)
+output * bg /home/$USER/Pictures/mono-olichon.jpg fill
+
+# Keyboard layout (Portuguese)
+input * {
+    xkb_layout "pt"
+}
+
+# Window colors
+client.focused          $red $black $white $red $red
+client.unfocused        $darkgray $black $white $black $black
+client.focused_inactive $darkgray $black $white $black $black
+client.urgent           $red $red $white $red $red
+
+# Appearance
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 0
+gaps outer 0
+smart_borders on
+smart_gaps on
+
+# Floating behavior
+floating_modifier $mod normal
+
+# Workspace layout
+workspace_layout default
+
+# --- KEYBINDS ---
+
+# Terminal
+bindsym $mod+Return exec $term
+
+# Kill window
+bindsym $mod+q kill
+
+# Exit sway
+bindsym $mod+Shift+e exit
+
+# Reload config
+bindsym $mod+Shift+c reload
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Program launcher
+bindsym $mod+p exec bemenu-run -p ">" --fn "Monospace 11" \
+    --nb "#000000" --nf "#ffffff" \
+    --fb "#000000" --ff "#ffffff" \
+    --sb "#54abab" --sf "#000000"
+
+# Floating
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# Focus (hjkl navigation)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Focus (arrow keys)
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move window (hjkl)
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Move window (arrow keys)
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Resize mode
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Layout
+bindsym $mod+v splitv
+bindsym $mod+s splith
+
+# Workspaces (1-9)
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+
+# Move container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+
+# Lock screen
+bindsym $mod+Escape exec swaylock -c 000000 -f
+
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# --- STATUS BAR ---
+
+bar {
+    status_command i3status
+    position top
+    
+    colors {
+        statusline $white
+        background $black
+        separator $red
+        focused_workspace $red $red $black
+        active_workspace $black $black $white
+        inactive_workspace $black $black $white
+    }
+    
+    font "Monospace 10"
+}
+
+# --- AUTO-LOCK & SLEEP ---
+
+exec swayidle -w \
+    timeout 600 'swaylock -c 000000 -f' \
+    timeout 900 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"'
+
+# --- INITIAL APPLICATIONS ---
+
+# Disable window focus on mouse hover
+focus_follows_mouse no
+
+# --- INCLUDE LOCAL CONFIG ---
+
+include /etc/sway/config.d/*
+
