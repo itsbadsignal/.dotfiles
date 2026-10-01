@@ -88,3 +88,4 @@ setopt NOTIFY
 # Performance
 setopt MENU_COMPLETE
 
+export PATH="$HOME/.local/bin:$PATH"
